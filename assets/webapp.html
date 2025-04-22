@@ -1,0 +1,113 @@
+<!--paste chatt code--><!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Riddle Generator</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+                color: #1f2937;
+                text-align: center;
+                margin: 0;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+            }
+    
+            h1 {
+                font-size: 2.5rem;
+                color: #000000;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                margin-bottom: 20px;
+            }
+    
+            .riddle-box {
+                background: rgba(255, 255, 255, 0.9);
+                padding: 20px 30px;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                max-width: 400px;
+                width: 100%;
+                text-align: center;
+            }
+    
+            .riddle-text {
+                font-size: 1.2rem;
+                color: #374151;
+                margin-bottom: 15px;
+            }
+    
+            .answer-text {
+                font-weight: bold;
+                color: #2563eb;
+                margin-top: 15px;
+                display: none;
+            }
+    
+            button {
+                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1rem;
+                margin: 10px 5px;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+    
+            button:hover {
+                background: linear-gradient(135deg, #1e40af, #1d4ed8);
+                transform: scale(1.05);
+            }
+    
+            button:active {
+                background-color: #1e3a8a;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Riddle Generator</h1>
+        <div class="riddle-box">
+            <p class="riddle-text">Click the button to get a riddle!</p>
+            <p class="answer-text">Answer: </p>
+            <button onclick="generateRiddle()">Generate Riddle</button>
+            <button onclick="showAnswer()" id="show-answer-button" style="display: none;">Show Answer</button>
+        </div>
+    
+        <script>
+            const riddles = [
+                { question: "What has keys but can’t open locks?", answer: "A piano." },
+                { question: "What has to be broken before you can use it?", answer: "An egg." },
+                { question: "I’m tall when I’m young, and I’m short when I’m old. What am I?", answer: "A candle." },
+                { question: "What can travel around the world while staying in the same spot?", answer: "A stamp." },
+                { question: "What gets wetter the more it dries?", answer: "A towel." }
+            ];
+    
+            function generateRiddle() {
+                const riddle = riddles[Math.floor(Math.random() * riddles.length)];
+                const riddleText = document.querySelector(".riddle-text");
+                const answerText = document.querySelector(".answer-text");
+                const showAnswerButton = document.getElementById("show-answer-button");
+    
+                riddleText.textContent = riddle.question;
+                answerText.textContent = `Answer: ${riddle.answer}`;
+                answerText.style.display = "none";
+                showAnswerButton.style.display = "inline-block";
+            }
+    
+            function showAnswer() {
+                const answerText = document.querySelector(".answer-text");
+                const showAnswerButton = document.getElementById("show-answer-button");
+    
+                answerText.style.display = "block";
+                showAnswerButton.style.display = "none";
+            }
+        </script>
+    </body>
+    </html>
